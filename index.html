@@ -143,18 +143,26 @@
       color: var(--white);
     }
 
-    /* ✅ FIX: que el gradiente se aplique SOLO al ancho del texto */
-    .hero-name .last {
-      display: inline-block;   /* clave: evita que el span ocupe 100% */
-      width: max-content;      /* opcional, refuerza el “fit” al texto */
-      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
+.hero-name .last{
+  display: inline-block;
+  width: max-content;
 
-      filter: drop-shadow(0 0 25px var(--accent-primary));
-    }
+  /* gradiente más parecido al de la referencia (con stops) */
+  background: linear-gradient(90deg,
+    var(--accent-primary) 0%,
+    #c25578 45%,
+    var(--accent-secondary) 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  /* sin glow */
+  filter: none;
+}
+
 
     .hero-tagline {
       font-family: 'Syne', sans-serif;
