@@ -144,7 +144,6 @@
             line-height: 0.9;
             letter-spacing: -1px;
             margin-bottom: 35px;
-            position: relative;
             opacity: 0;
             animation: fadeInUp 1.2s ease forwards 0.6s;
         }
@@ -156,26 +155,15 @@
 
         .hero-name .last {
             display: block;
-            position: relative;
-        }
-
-        .hero-name .last::before {
-            content: 'LEMOS';
-            position: absolute;
-            top: 0;
-            left: 0;
             background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
-            color: transparent;
+            background-clip: text;
         }
 
-        .hero-name .last::after {
-            content: 'LEMOS';
-            position: relative;
-            color: var(--white);
-            opacity: 0.3; /* Fallback sutil si gradient falla */
+        /* Glow sutil para más impacto */
+        .hero-name .last {
+            text-shadow: 0 0 30px rgba(161,35,101,0.4);
         }
 
         .hero-tagline {
@@ -249,8 +237,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Resto del CSS igual que antes (stats, profile, experience, skills, contact, footer, responsive) */
-
         .stats {
             padding: 90px 40px;
             display: grid;
@@ -258,6 +244,11 @@
             gap: 35px;
             border-top: 1px solid rgba(255,255,255,0.08);
             border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .stat {
+            padding: 35px 0;
+            position: relative;
         }
 
         .stat::before {
@@ -395,6 +386,13 @@
             color: var(--gray);
             margin-bottom: 20px;
             letter-spacing: 1px;
+        }
+
+        .exp-tasks {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .exp-tasks li {
@@ -645,8 +643,6 @@
             <span>Scroll</span>
         </div>
     </section>
-
-    <!-- Resto del contenido igual (stats, profile, experience, skills, contact, footer) -->
 
     <section class="stats">
         <div class="stat">
