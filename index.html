@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Alexis Lemos - Especialista en Marketing Digital y Sistemas de Venta. 6 años de experiencia gestionando +$150K en Meta Ads, copywriting, automatizaciones y cierre de ventas. Disponible full-time inmediatamente." />
+  <meta name="description" content="Alexis Lemos - Especialista en Marketing Digital y Sistemas de Venta. 6 años de experiencia gestionando +$150K en Meta Ads, copywriting, automatizaciones y cierre de ventas. Disponible full-time inmediatamente.">
   <title>Alexis Lemos | Marketing Digital & Sistemas de Venta</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -128,6 +128,36 @@
       animation: fadeInUp 1.2s ease forwards 0.4s;
     }
 
+    /* ✅ Layout estable (sin absolute) para foto + nombre */
+    .hero-top{
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      grid-template-areas: "name photo";
+      column-gap: 40px;
+      align-items: end;
+    }
+
+    .hero-name { grid-area: name; }
+    .hero-photo { grid-area: photo; justify-self: end; }
+
+    .hero-photo{
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--accent-secondary);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      opacity: 0;
+      animation: fadeInUp 1.2s ease forwards 0.65s;
+    }
+
+    .hero-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .hero-name {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(70px, 14vw, 180px);
@@ -143,26 +173,22 @@
       color: var(--white);
     }
 
-.hero-name .last{
-  display: inline-block;
-  width: max-content;
-
-  /* gradiente más parecido al de la referencia (con stops) */
-  background: linear-gradient(90deg,
-    var(--accent-primary) 0%,
-    #c25578 45%,
-    var(--accent-secondary) 100%
-  );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-
-  /* sin glow */
-  filter: none;
-}
-
+    /* ✅ Gradiente SOLO sobre el ancho del texto (sin glow) */
+    .hero-name .last {
+      display: inline-block;
+      width: max-content;
+      background: linear-gradient(90deg,
+        var(--accent-primary) 0%,
+        #c25578 45%,
+        var(--accent-secondary) 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      filter: none;
+      text-shadow: 0 6px 18px rgba(161, 35, 101, 0.18); /* sutil, sin mancha */
+    }
 
     .hero-tagline {
       font-family: 'Syne', sans-serif;
@@ -459,7 +485,6 @@
     }
 
     .contact-info { display: flex; flex-direction: column; gap: 25px; }
-
     .contact-item { display: flex; flex-direction: column; gap: 4px; }
 
     .contact-label {
@@ -534,6 +559,18 @@
       nav { padding: 20px 25px; }
       .hero { padding: 110px 25px 70px; }
       .stats { padding: 50px 25px; }
+
+      /* mobile: foto arriba, nombre abajo (sin superponer) */
+      .hero-top{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "photo"
+          "name";
+        row-gap: 22px;
+        align-items: start;
+      }
+      .hero-photo{ width: 160px; height: 160px; justify-self: center; }
+
       .profile, .exp-grid, .skills-grid, .contact-grid { grid-template-columns: 1fr; gap: 35px; }
       .profile, .experience, .skills, .contact { padding: 70px 25px; }
       .section-label { position: relative; top: 0; margin-bottom: 25px; }
@@ -566,10 +603,17 @@
   <section class="hero">
     <div class="hero-label">Marketing Digital & Sistemas de Venta</div>
 
-    <h1 class="hero-name">
-      <span class="first">ALEXIS</span>
-      <span class="last">LEMOS</span>
-    </h1>
+    <div class="hero-top">
+      <h1 class="hero-name">
+        <span class="first">ALEXIS</span>
+        <span class="last">LEMOS</span>
+      </h1>
+
+      <!-- ✅ Foto en la raíz del repo: foto-alexis.jpg -->
+      <div class="hero-photo">
+        <img src="foto-alexis.jpg" alt="Alexis Lemos - Marketing Digital">
+      </div>
+    </div>
 
     <p class="hero-tagline">
       6 años vendiendo online. No en teoría, <strong>en la trinchera</strong>: armando campañas, escribiendo copys, optimizando hasta que los números cierran.
