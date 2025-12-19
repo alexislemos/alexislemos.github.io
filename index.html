@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexis Lemos | Marketing Digital</title>
+    <meta name="description" content="Alexis Lemos - Especialista en Marketing Digital y Sistemas de Venta. 6 años de experiencia gestionando +$150K en Meta Ads, copywriting, automatizaciones y cierre de ventas. Disponible full-time inmediatamente.">
+    <title>Alexis Lemos | Marketing Digital & Sistemas de Venta</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -11,9 +12,9 @@
         :root {
             --black: #0a0a0a;
             --white: #f5f5f5;
-            --accent-primary: #a12365; /* Magenta/Purple from brand */
-            --accent-secondary: #d8ba4e; /* Gold from brand */
-            --accent-glow: #a1236540; /* Adjusted glow for primary accent */
+            --accent-primary: #a12365;
+            --accent-secondary: #d8ba4e;
+            --accent-glow: #a1236540;
             --gray: #888;
             --dark-gray: #1a1a1a;
             --light-gray: #ccc;
@@ -34,10 +35,9 @@
             color: var(--white);
             font-family: 'Space Mono', monospace;
             overflow-x: hidden;
-            cursor: default; /* More professional cursor */
+            cursor: default;
         }
 
-        /* Noise overlay - toned down for professionalism */
         body::before {
             content: '';
             position: fixed;
@@ -51,7 +51,6 @@
             z-index: 1000;
         }
 
-        /* Grid lines background - subtler */
         .grid-bg {
             position: fixed;
             top: 0;
@@ -66,13 +65,11 @@
             z-index: -1;
         }
 
-        /* Animated gradient blob - refined with brand colors */
         .blob {
             position: fixed;
             width: 500px;
             height: 500px;
             border-radius: 50%;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
             filter: blur(60px);
             animation: float 25s ease-in-out infinite;
             pointer-events: none;
@@ -89,7 +86,6 @@
             66% { transform: translate(-25px, 15px) scale(0.95); }
         }
 
-        /* Navigation - more refined with brand accents */
         nav {
             position: fixed;
             top: 0;
@@ -123,7 +119,6 @@
             color: var(--light-gray);
         }
 
-        /* Hero Section - improved typography and animations */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -153,20 +148,26 @@
             animation: fadeInUp 1.2s ease forwards 0.6s;
         }
 
-        .hero-name span {
-            display: block;
-            overflow: hidden;
+        .hero-name .first {
+            color: var(--white);
         }
 
-        .hero-name .outline {
-            -webkit-text-stroke: 1.5px var(--white);
+        .hero-name .last {
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
-            transition: all 0.4s ease;
         }
 
-        .hero-name .outline:hover {
-            color: var(--accent-secondary);
-            -webkit-text-stroke: 1.5px var(--accent-secondary);
+        .hero-name span span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(100%);
+            animation: revealLetter 0.8s ease forwards;
+        }
+
+        @keyframes revealLetter {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-tagline {
@@ -182,6 +183,31 @@
         .hero-tagline strong {
             color: var(--accent-secondary);
             font-weight: 700;
+        }
+
+        .hero-cta {
+            margin-top: 50px;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease forwards 1s;
+        }
+
+        .cta-button {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: var(--black);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-radius: 50px;
+            display: inline-block;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(161,35,101,0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(161,35,101,0.6);
         }
 
         .scroll-indicator {
@@ -215,7 +241,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Stats Section - grid improvements for better alignment */
         .stats {
             padding: 90px 40px;
             display: grid;
@@ -223,11 +248,6 @@
             gap: 35px;
             border-top: 1px solid rgba(255,255,255,0.08);
             border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .stat {
-            padding: 35px 0;
-            position: relative;
         }
 
         .stat::before {
@@ -255,7 +275,6 @@
             text-transform: uppercase;
         }
 
-        /* Profile Section - better readability */
         .profile {
             padding: 140px 40px;
             display: grid;
@@ -291,28 +310,8 @@
         .profile-text em {
             font-style: normal;
             color: var(--accent-secondary);
-            position: relative;
         }
 
-        .profile-text em::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 1.5px;
-            background: var(--accent-secondary);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s ease;
-        }
-
-        .profile-text em:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        /* Experience Section - enhanced hover effects */
         .experience {
             padding: 140px 40px;
             background: var(--dark-gray);
@@ -327,7 +326,6 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: 180px;
             color: rgba(255,255,255,0.015);
-            line-height: 1;
             pointer-events: none;
         }
 
@@ -389,13 +387,6 @@
             letter-spacing: 1px;
         }
 
-        .exp-tasks {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
         .exp-tasks li {
             font-size: 13px;
             color: var(--light-gray);
@@ -416,7 +407,6 @@
             color: var(--accent-secondary);
         }
 
-        /* Skills Section - tag improvements for accessibility */
         .skills {
             padding: 140px 40px;
         }
@@ -443,12 +433,6 @@
             color: var(--accent-primary);
         }
 
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
         .skill-tag {
             padding: 8px 18px;
             background: rgba(255,255,255,0.02);
@@ -466,7 +450,6 @@
             transform: translateY(-2px);
         }
 
-        /* Contact Section - integrated brand colors */
         .contact {
             padding: 140px 40px;
             background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
@@ -483,7 +466,6 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(90px, 18vw, 280px);
             color: rgba(0,0,0,0.08);
-            line-height: 1;
             pointer-events: none;
             white-space: nowrap;
         }
@@ -579,7 +561,6 @@
             50% { opacity: 0.4; }
         }
 
-        /* Footer - cleaner */
         footer {
             padding: 25px 40px;
             display: flex;
@@ -591,7 +572,6 @@
             border-top: 1px solid rgba(255,255,255,0.08);
         }
 
-        /* Responsive - enhanced for better mobile UX */
         @media (max-width: 900px) {
             nav { padding: 20px 25px; }
             .hero { padding: 110px 25px 70px; }
@@ -603,30 +583,24 @@
             .profile, .experience, .skills, .contact {
                 padding: 70px 25px;
             }
-            .section-label {
-                position: relative;
-                top: 0;
-                margin-bottom: 25px;
-            }
+            .section-label { position: relative; top: 0; margin-bottom: 25px; }
             .scroll-indicator { display: none; }
             footer { flex-direction: column; gap: 12px; text-align: center; }
-        }
-
-        /* Accessibility improvements */
-        a:focus, button:focus {
-            outline: 2px solid var(--accent-secondary);
-            outline-offset: 2px;
+            .cta-button { font-size: 18px; padding: 16px 35px; }
         }
     </style>
     <script>
-        // Add scrolled class to nav for sticky effect
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const letters = document.querySelectorAll('.hero-name span span');
+            letters.forEach((letter, i) => {
+                letter.style.animationDelay = `${0.1 + i * 0.05}s`;
+            });
         });
     </script>
 </head>
@@ -643,12 +617,15 @@
     <section class="hero">
         <div class="hero-label">Marketing Digital & Sistemas de Venta</div>
         <h1 class="hero-name">
-            <span>ALEXIS</span>
-            <span class="outline">LEMOS</span>
+            <span class="first"><span>A</span><span>L</span><span>E</span><span>X</span><span>I</span><span>S</span></span>
+            <span class="last"><span>L</span><span>E</span><span>M</span><span>O</span><span>S</span></span>
         </h1>
         <p class="hero-tagline">
             6 años vendiendo online. No en teoría, <strong>en la trinchera</strong>: armando campañas, escribiendo copys, optimizando hasta que los números cierran.
         </p>
+        <div class="hero-cta">
+            <a href="https://wa.me/5491167848890?text=Hola%20Alexis%2C%20vi%20tu%20CV%20y%20me%20interesa%20hablar%20de%20un%20proyecto%20de%20marketing%20digital" class="cta-button" target="_blank">HABLEMOS POR WHATSAPP</a>
+        </div>
         <div class="scroll-indicator">
             <div class="scroll-line"></div>
             <span>Scroll</span>
@@ -769,8 +746,8 @@
             <h2 class="contact-title">¿HABLAMOS?</h2>
             <div class="contact-info">
                 <div class="contact-item">
-                    <span class="contact-label">Teléfono</span>
-                    <span class="contact-value"><a href="tel:+541167848890">11 6784 8890</a></span>
+                    <span class="contact-label">WhatsApp</span>
+                    <span class="contact-value"><a href="https://wa.me/5491167848890?text=Hola%20Alexis%2C%20vi%20tu%20CV%20y%20me%20interesa%20hablar%20de%20un%20proyecto%20de%20marketing%20digital" target="_blank">11 6784 8890</a></span>
                 </div>
                 <div class="contact-item">
                     <span class="contact-label">Email</span>
