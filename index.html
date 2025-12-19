@@ -149,24 +149,32 @@
         }
 
         .hero-name .first {
+            display: block;
             color: var(--white);
+            overflow: hidden;
         }
 
         .hero-name .last {
+            display: block;
             background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            overflow: hidden;
         }
 
-        .hero-name span span {
+        .hero-name .word {
             display: inline-block;
             opacity: 0;
             transform: translateY(100%);
-            animation: revealLetter 0.8s ease forwards;
+            animation: revealWord 1s ease forwards;
         }
 
-        @keyframes revealLetter {
+        .hero-name .last .word {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes revealWord {
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -433,21 +441,31 @@
             color: var(--accent-primary);
         }
 
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            row-gap: 12px;
+            max-width: 100%;
+        }
+
         .skill-tag {
-            padding: 8px 18px;
+            padding: 10px 20px;
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.08);
             font-size: 12px;
             letter-spacing: 1px;
             transition: all 0.4s ease;
             cursor: pointer;
+            white-space: nowrap;
+            border-radius: 4px;
         }
 
         .skill-tag:hover {
             background: var(--accent-secondary);
             border-color: var(--accent-secondary);
             color: var(--black);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         .contact {
@@ -587,6 +605,7 @@
             .scroll-indicator { display: none; }
             footer { flex-direction: column; gap: 12px; text-align: center; }
             .cta-button { font-size: 18px; padding: 16px 35px; }
+            .skill-tags { gap: 10px; }
         }
     </style>
     <script>
@@ -594,13 +613,6 @@
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) nav.classList.add('scrolled');
             else nav.classList.remove('scrolled');
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const letters = document.querySelectorAll('.hero-name span span');
-            letters.forEach((letter, i) => {
-                letter.style.animationDelay = `${0.1 + i * 0.05}s`;
-            });
         });
     </script>
 </head>
@@ -617,8 +629,8 @@
     <section class="hero">
         <div class="hero-label">Marketing Digital & Sistemas de Venta</div>
         <h1 class="hero-name">
-            <span class="first"><span>A</span><span>L</span><span>E</span><span>X</span><span>I</span><span>S</span></span>
-            <span class="last"><span>L</span><span>E</span><span>M</span><span>O</span><span>S</span></span>
+            <span class="first"><span class="word">ALEXIS</span></span>
+            <span class="last"><span class="word">LEMOS</span></span>
         </h1>
         <p class="hero-tagline">
             6 años vendiendo online. No en teoría, <strong>en la trinchera</strong>: armando campañas, escribiendo copys, optimizando hasta que los números cierran.
@@ -766,7 +778,7 @@
 
     <footer>
         <span>© 2025 Alexis Lemos</span>
-        <span>Diseñado por Alexis Lemos</span>
+        <span>Diseñado para destacar</span>
     </footer>
 </body>
 </html>
