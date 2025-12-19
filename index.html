@@ -144,6 +144,7 @@
             line-height: 0.9;
             letter-spacing: -1px;
             margin-bottom: 35px;
+            position: relative;
             opacity: 0;
             animation: fadeInUp 1.2s ease forwards 0.6s;
         }
@@ -151,31 +152,30 @@
         .hero-name .first {
             display: block;
             color: var(--white);
-            overflow: hidden;
         }
 
         .hero-name .last {
             display: block;
+            position: relative;
+        }
+
+        .hero-name .last::before {
+            content: 'LEMOS';
+            position: absolute;
+            top: 0;
+            left: 0;
             background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
             -webkit-background-clip: text;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
             color: transparent;
-            overflow: hidden;
         }
 
-        .hero-name .word {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(100%);
-            animation: revealWord 1s ease forwards;
-        }
-
-        .hero-name .last .word {
-            animation-delay: 0.3s;
-        }
-
-        @keyframes revealWord {
-            to { opacity: 1; transform: translateY(0); }
+        .hero-name .last::after {
+            content: 'LEMOS';
+            position: relative;
+            color: var(--white);
+            opacity: 0.3; /* Fallback sutil si gradient falla */
         }
 
         .hero-tagline {
@@ -248,6 +248,8 @@
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Resto del CSS igual que antes (stats, profile, experience, skills, contact, footer, responsive) */
 
         .stats {
             padding: 90px 40px;
@@ -629,8 +631,8 @@
     <section class="hero">
         <div class="hero-label">Marketing Digital & Sistemas de Venta</div>
         <h1 class="hero-name">
-            <span class="first"><span class="word">ALEXIS</span></span>
-            <span class="last"><span class="word">LEMOS</span></span>
+            <span class="first">ALEXIS</span>
+            <span class="last">LEMOS</span>
         </h1>
         <p class="hero-tagline">
             6 años vendiendo online. No en teoría, <strong>en la trinchera</strong>: armando campañas, escribiendo copys, optimizando hasta que los números cierran.
@@ -643,6 +645,8 @@
             <span>Scroll</span>
         </div>
     </section>
+
+    <!-- Resto del contenido igual (stats, profile, experience, skills, contact, footer) -->
 
     <section class="stats">
         <div class="stat">
@@ -778,7 +782,7 @@
 
     <footer>
         <span>© 2025 Alexis Lemos</span>
-        <span>Diseñado para destacar</span>
+        <span>Diseñado por Alexis Lemos</span>
     </footer>
 </body>
 </html>
